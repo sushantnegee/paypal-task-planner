@@ -11,11 +11,18 @@ import React, { useState } from "react";
 import { BiHide, BiShow } from "react-icons/bi";
 
 const SignUp = () => {
-  const [show, setShow] = useState(false);
-  // const [show,setShow] = useState(false);
+    const [show, setShow] = useState(false)
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [confPassword, setConfPassword] = useState("")
+    const [loading,setLoading] = useState(false);
   const handleClick = () => {
     setShow(!show);
   };
+  const submitHandler = ()=>{
+
+  }
   return (
     <VStack>
       <FormControl isRequired>
@@ -40,6 +47,23 @@ const SignUp = () => {
           </InputRightElement>
         </InputGroup>
       </FormControl>
+      <FormControl isRequired>
+        <FormLabel>Confirm Password</FormLabel>
+        <InputGroup>
+          <Input
+            type={show ? "text" : "password"}
+            placeholder="Enter password"
+          />
+          <InputRightElement width={"4.5rem"}>
+            <Button h="1.75rem" size="sm" onClick={handleClick}>
+              {show ? <BiHide /> : <BiShow />}
+            </Button>
+          </InputRightElement>
+        </InputGroup>
+      </FormControl>
+      <Button colorScheme={'blue'} width="100%" style={{marginTop:15}} isLoading={loading} onClick={submitHandler}>
+        SignUp
+    </Button>
     </VStack>
   );
 };

@@ -10,6 +10,7 @@ import {
   Container,
 } from "@chakra-ui/react";
 import Login from "../Components/Authentication/Login";
+import SignUp from "../Components/Authentication/SignUp";
 
 const HomePage = () => {
   return (
@@ -50,8 +51,7 @@ const HomePage = () => {
               <Login />
             </TabPanel>
             <TabPanel>
-                hfjdfdfk
-              {/* <Signup /> */}
+              <SignUp/>
             </TabPanel>
           </TabPanels>
         </Tabs>

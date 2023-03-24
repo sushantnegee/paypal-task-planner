@@ -62,7 +62,7 @@ router.post('/login',async (req,res)=>{
       token: generateToken(user._id), // using jwt and method is in config/generateToken.js
     });
   } catch (error) {
-    console.error(err);
+    console.error(error);
     res.status(500).json({ message: 'Server error' });
   }
 })

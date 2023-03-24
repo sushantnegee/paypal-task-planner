@@ -1,14 +1,14 @@
 const express = require('express');
 const connectDataBase = require('./config/db');
 const dotenv = require('dotenv')
-const userRoutes = require('./routes/userRoutes')
 const app = express();
+const userRoutes = require('./routes/userRoutes')
 dotenv.config();
 
-app.use('/user')
+app.use('/user',userRoutes);
 const PORT = process.env.PORT || 5000;
 
-connectDataBase();
+connectDataBase(); 
 app.get('/',(req,res)=>{
     res.send('Hello world')
 })

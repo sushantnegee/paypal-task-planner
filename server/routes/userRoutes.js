@@ -1,6 +1,5 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
-
 const router = express.Router();
 const User = require("../models/userModel");
 const generateToken = require("../config/generateToken");
@@ -32,7 +31,7 @@ router.post("/register", async (req, res) => {
         token: generateToken(user._id), // using jwt and method is in config/generateToken.js
       });
     } else {
-      throw new Error("Faild to Create User");
+      throw new Error("Failed to Create User");
     }
   } catch (error) {
     console.error(err);

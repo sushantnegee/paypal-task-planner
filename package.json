@@ -1,0 +1,19 @@
+{
+  "name": "paypal-task-planner",
+  "version": "1.0.0",
+  "description": "made by Sushant Kumar",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sushantnegee/paypal-task-planner.git"
+  },
+  "author": "Sushant Kuamr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sushantnegee/paypal-task-planner/issues"
+  },
+  "homepage": "https://github.com/sushantnegee/paypal-task-planner#readme"
+}

@@ -9,6 +9,7 @@ import {
   Box,
   Container,
 } from "@chakra-ui/react";
+import Login from "../Components/Authentication/Login";
 
 const HomePage = () => {
   return (
@@ -39,15 +40,14 @@ const HomePage = () => {
         borderRadius={"lg"}
         borderWidth={"1px"}
       >
-        <Tabs variant="soft-rounded" colorScheme={'purple'}>
+        <Tabs variant="soft-rounded" colorScheme={'blue'}>
           <TabList mb={"1em"}>
             <Tab w={"50%"}>Login</Tab>
             <Tab w={"50%"}>SignUp</Tab>
           </TabList>
           <TabPanels>
             <TabPanel>
-                hjfhdkkjfd
-              {/* <Login /> */}
+              <Login />
             </TabPanel>
             <TabPanel>
                 hfjdfdfk

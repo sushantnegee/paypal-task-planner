@@ -16,6 +16,7 @@ router.post('/', protect,async (req, res) => {
       res.status(201).json(sprint);
     } catch (err) {
       res.status(400).json({ message: err.message });
+      // throw new Error(err.message);
     }
   });
 

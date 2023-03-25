@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const router = express.Router();
 const User = require("../models/userModel");
 const generateToken = require("../config/generateToken");
+const protect = require("../middleware/authMiddleware");
 
 router.post("/register", async (req, res) => {
   try {
@@ -65,6 +66,18 @@ router.post('/login',async (req,res)=>{
     console.error(error);
     res.status(500).json({ message: 'Server error' });
   }
+})
+
+router.get('/',protect,async(req,res)=>{
+  const keyword  = req.query.search ?{
+    $or:[
+      {name:{$regex: req.query.search, $options:"i"}},
+      {email:{$regex: req.query.search, $options:"i"}}
+    ]
+  }:{}
+
+  const users = await User.find(keyword).find({_id:{$ne:req.user._id}});
+  res.send(users);
 })
 
 

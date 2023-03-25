@@ -12,7 +12,7 @@ app.use(cors())
 
 app.use('/user',userRoutes);
 app.use('/sprints',sprintRoutes);
-app.use('/task',taskRoutes);
+app.use('/tasks',taskRoutes);
 const PORT = process.env.PORT || 5000;
 
 connectDataBase();

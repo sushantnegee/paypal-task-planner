@@ -1,10 +1,11 @@
 import { createContext, useEffect, useState } from "react";
 
-const AppContext = createContext();
+export const AppContext = createContext();
 
 const ContextProvider = ({children}) => {
   const [user, setUser] = useState("");
   const [loggedIn,setLoggedIn] = useState(false);
+  const [sprints,setSprints] = useState([]);
 
   useEffect(()=>{
       const userInfo = JSON.parse(localStorage.getItem("userInfo"));
@@ -19,7 +20,9 @@ const ContextProvider = ({children}) => {
     <AppContext.Provider value={{
         user,
         setUser,
-        setLoggedIn
+        setLoggedIn,
+        sprints,
+        setSprints
     }}>
         {children}
     </AppContext.Provider>

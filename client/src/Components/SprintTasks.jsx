@@ -13,7 +13,7 @@ const SprintTasks = () => {
   const toast = useToast();
 
   const {user,selectedSprint} = useContext(AppContext)
-  const fetchMessages = async () => {
+  const fetchTasks = async () => {
     if (!selectedSprint) return;
 
     try {
@@ -29,8 +29,9 @@ const SprintTasks = () => {
         `http://localhost:5000/tasks/${selectedSprint._id}`,
         config
       );
-      console.log("fetched Tasks =>",data)
       setTasks(data);
+      console.log(data)
+      console.log("fetched Tasks =>",tasks)
       setLoading(false);
 
     } catch (error) {
@@ -46,9 +47,9 @@ const SprintTasks = () => {
   };
 
   useEffect(() => {
-    fetchMessages();
-
+    fetchTasks();
   }, [selectedSprint]);
+  console.log(tasks)
   return (
     <> 
     {selectedSprint?
@@ -71,11 +72,14 @@ const SprintTasks = () => {
           >
           Sprint Tasks
         </Text>
+        <Box display={'flex'} justifyContent={'center'} alignItems={'center'}>
+        <Text padding={'5px'} borderRadius={'4px'} border={tasks.length==0?"":"2px solid pink"} mr={'30px'} color={'purple.800'} fontWeight={'600'}>Total Tasks : {tasks.length}</Text>
         <CreateNEwTaskModal>
-        <Button>
+        <Button >
           create new Task
         </Button>
         </CreateNEwTaskModal>
+        </Box>
       </Box>
       <Box
         backgroundColor={"white"}
@@ -92,13 +96,13 @@ const SprintTasks = () => {
           </TabList>
           <TabPanels>
             <TabPanel>
-              < TaskList tasks={tasks} filter={"todo"}/>
+              < TaskList tasks={tasks} status={"todo"}/>
             </TabPanel>
             <TabPanel>
-              <TaskList tasks={tasks} filter={"in-progress"}/>
+              <TaskList tasks={tasks} status={"in-progress"}/>
             </TabPanel>
             <TabPanel>
-              <TaskList tasks={tasks} filter={"done"}/>
+              <TaskList tasks={tasks} status={"done"}/>
             </TabPanel>
           </TabPanels>
         </Tabs>

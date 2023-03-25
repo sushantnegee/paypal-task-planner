@@ -61,13 +61,13 @@ const AllSprints = () => {
       >
         Sprints
         <CreateSprintModal>
-          <button
+          <Button
             fontSize={{ base: "19px", md: "13px", lg: "19px" }}
             display={"flex"}
             rightIcon={<AddIcon />}
           >
             Create New Sprint
-          </button>
+          </Button>
         </CreateSprintModal>
       </Box>
       <Box height={"100%"} width={"100%"} flexDir={"column"} overflowY="hidden">

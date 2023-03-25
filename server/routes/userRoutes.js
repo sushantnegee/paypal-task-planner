@@ -67,6 +67,15 @@ router.post('/login',async (req,res)=>{
     res.status(500).json({ message: 'Server error' });
   }
 })
+router.get('/', protect,async (req, res) => {
+  try {
+    const users = await User.find(); // find all users
+    res.json(users); // send the users as a JSON response 
+  } catch (err) {
+    console.error(err);
+    res.status(500).send(err.message);
+  }
+});
 
 router.get('/',protect,async(req,res)=>{
   const keyword  = req.query.search ?{
@@ -79,6 +88,8 @@ router.get('/',protect,async(req,res)=>{
   const users = await User.find(keyword).find({_id:{$ne:req.user._id}});
   res.send(users);
 })
+
+
 
 
 module.exports = router;

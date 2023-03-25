@@ -11,7 +11,6 @@ import {
 import axios from "axios";
 import React, { useState } from "react";
 import { BiHide, BiShow } from "react-icons/bi";
-import {useNavigate} from 'react-router-dom'
 
 const SignUp = () => {
     const [show, setShow] = useState(false)
@@ -20,7 +19,6 @@ const SignUp = () => {
     const [password, setPassword] = useState("")
     const [confPassword, setConfPassword] = useState("")
     const [loading,setLoading] = useState(false);
-    const navigate = useNavigate();
     const toast = useToast()
   const handleClick = () => {
     setShow(!show);
@@ -68,7 +66,6 @@ const SignUp = () => {
               })
               localStorage.setItem('userInfo',JSON.stringify(data));
               setLoading(false);
-              navigate('/taskplanner')
             
         }catch(error){
             toast({

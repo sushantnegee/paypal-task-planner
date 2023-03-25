@@ -75,7 +75,7 @@ const AllSprints = () => {
       </Box>
       <Box height={"100%"} width={"100%"} flexDir={"column"} overflowY="scroll">
         {sprints ? (
-          <Stack >
+          <Stack px={3} >
             {sprints.map((sprint) => (
               <Box
                 p={"3"}

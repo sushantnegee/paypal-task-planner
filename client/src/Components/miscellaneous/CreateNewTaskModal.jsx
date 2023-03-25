@@ -184,7 +184,7 @@ const handleTask=(userSelected)=>{
               </Select>
             </FormControl>
             <FormControl>
-                <Input placeholder='Add Users eg: sushant etc' mb="3" onChange={(e)=>{handleSearch(e.target.value)}}/>
+                <Input placeholder='Assign to eg: sushant etc' mb="3" onChange={(e)=>{handleSearch(e.target.value)}}/>
             </FormControl>
             {assignee?<Box mb={'2'}  paddng={"20px"} w={'100%'} display="flex" flexWrap={"wrap"}><Text backgroundColor={'skyblue'} fontSize={"m"}>{assignee.name}</Text></Box>:""}
             {loading?<Spinner/>:

@@ -5,7 +5,7 @@ export const AppContext = createContext();
 const ContextProvider = ({children}) => {
   const [user, setUser] = useState("");
   const [loggedIn,setLoggedIn] = useState(false);
-  const [sprints,setSprints] = useState([]);
+  const [sprints,setSprints] = useState('');
 
   useEffect(()=>{
       const userInfo = JSON.parse(localStorage.getItem("userInfo"));

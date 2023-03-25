@@ -6,7 +6,7 @@ import SprintTasks from '../Components/SprintTasks'
 const TaskPlannerPage = () => {
   return (
     <div>
-        <Box>
+        <Box display={'flex'} justifyContent="space-between" height={'90vh'}>
             <AllSprints/>
             <SprintTasks/>
         </Box>

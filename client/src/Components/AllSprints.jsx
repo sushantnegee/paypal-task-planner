@@ -2,11 +2,13 @@ import React, { useContext } from 'react'
 import { Box, Button, Stack, Text, useConst } from '@chakra-ui/react'
 import { AddIcon } from '@chakra-ui/icons';
 import { AppContext } from '../Context/ContextProvider';
+import SprintLoading from './SprintLoading';
 
 const AllSprints = () => {
-  const {sprints} = useContext(AppContext)
+  const {sprints} = useContext(AppContext);
+  console.log(sprints)
   return (
-    <Box display={'flex'} flexDirection="column" w={{base:"100%",md:'30%'}} borderWidth="1px" alignItems={'center'}>
+    <Box display={'flex'} flexDir="column" w={{base:"100%",md:'30%'}} borderWidth="1px" alignItems={'center'}>
         <Box  pb={3}
         px={3}
         fontSize={{ base: "28px", md: "30px" }}
@@ -16,10 +18,10 @@ const AllSprints = () => {
         justifyContent="space-between"
         alignItems="center">
             Sprints
-            <Button fontSize={{ base: "17px", md: "10px", lg: "17px" }} display={'flex'} rightIcon={<AddIcon />}>Create New Sprint</Button>
+            <Button fontSize={{ base: "19px", md: "13px", lg: "19px" }} display={'flex'} rightIcon={<AddIcon />}>Create New Sprint</Button>
         </Box>
-        <Box height={'100%'} width={'100%'} flexDirection={'column'} overflowY="hidden">
-        <Stack overflowY="scroll">
+        <Box height={'100%'} width={'100%'} flexDir={'column'} overflowY="hidden">
+        {sprints?<Stack overflowY="scroll">
             {sprints.map((sprint) => (
               <Box
                 cursor="pointer"
@@ -34,7 +36,7 @@ const AllSprints = () => {
                 
               </Box>
             ))}
-          </Stack>
+          </Stack>: <SprintLoading/>}
         </Box>
     </Box>
   )

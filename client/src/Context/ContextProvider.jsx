@@ -18,6 +18,7 @@ const ContextProvider = ({children}) => {
     "startDate": "2023-04-01",
     "endDate": "2023-03-05"
   }]);
+  const [selectedSprint,setSelectedSprint] = useState()
 
   useEffect(()=>{
       const userInfo = JSON.parse(localStorage.getItem("userInfo"));
@@ -34,7 +35,9 @@ const ContextProvider = ({children}) => {
         setUser,
         setLoggedIn,
         sprints,
-        setSprints
+        setSprints,
+        selectedSprint,
+        setSelectedSprint
     }}>
         {children}
     </AppContext.Provider>

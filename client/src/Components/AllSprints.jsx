@@ -88,7 +88,7 @@ const AllSprints = () => {
               >
                 <Text>{sprint.name}</Text>
                 <Text fontSize="xs">
-                  {sprint.startDate} to {sprint.endDate}
+                  {sprint.startDate.substring(0,10)} to {sprint.endDate.substring(0,10)}
                 </Text>
               </Box>
             ))}

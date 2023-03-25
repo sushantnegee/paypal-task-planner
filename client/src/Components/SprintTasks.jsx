@@ -12,7 +12,7 @@ const SprintTasks = () => {
   const [tasks,setTasks] = useState([]);
   const toast = useToast();
 
-  const {user,selectedSprint} = useContext(AppContext)
+  const {user,selectedSprint,fetchAgain} = useContext(AppContext)
   const fetchTasks = async () => {
     if (!selectedSprint) return;
 
@@ -26,7 +26,7 @@ const SprintTasks = () => {
       setLoading(true);
 
       const { data } = await axios.get(
-        `http://localhost:5000/tasks/${selectedSprint._id}`,
+        `https://paypal-task-planner-production.up.railway.app/tasks/${selectedSprint._id}`,
         config
       );
       setTasks(data);
@@ -48,7 +48,7 @@ const SprintTasks = () => {
 
   useEffect(() => {
     fetchTasks();
-  }, [selectedSprint]);
+  }, [selectedSprint,fetchAgain]);
   console.log(tasks)
   return (
     <> 

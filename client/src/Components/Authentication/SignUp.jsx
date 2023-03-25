@@ -56,7 +56,7 @@ const SignUp = () => {
                 }
             };
 
-            const data = await axios.post("http://localhost:5000/user/register",{name,email,password},config)
+            const data = await axios.post("https://paypal-task-planner-production.up.railway.app/user/register",{name,email,password},config)
             toast({
                 title: 'Registration Successfull',
                 status: 'success',

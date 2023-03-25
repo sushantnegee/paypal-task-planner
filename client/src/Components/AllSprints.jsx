@@ -21,7 +21,7 @@ const AllSprints = () => {
         },
       };
 
-      const { data } = await axios.get("http://localhost:5000/sprints", config);
+      const { data } = await axios.get("https://paypal-task-planner-production.up.railway.app/sprints", config);
       console.log(data);
       setSprints(data);
     } catch (error) {

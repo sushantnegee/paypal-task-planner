@@ -18,7 +18,6 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import axios from "axios";
-import { set } from "mongoose";
 import { useContext, useState } from "react";
 import { AppContext } from "../../Context/ContextProvider";
 import UserListItem from "./UserListItem";
@@ -65,7 +64,7 @@ const CreateNEwTaskModal = ({ children }) => {
       };
 
       const data = await axios.post(
-        `http://localhost:5000/tasks`,
+        `https://paypal-task-planner-production.up.railway.app/tasks`,
         {
           title: title,
           description: description,
@@ -112,7 +111,7 @@ const CreateNEwTaskModal = ({ children }) => {
           },
         };
   
-        const { data } = await axios.get(`http://localhost:5000/user?search=${query}`, config);
+        const { data } = await axios.get(`https://paypal-task-planner-production.up.railway.app/user?search=${query}`, config);
         // console.log("search result group model =>",data)
         setSearchResult(data);
         setLoading(false);

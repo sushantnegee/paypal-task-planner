@@ -34,7 +34,7 @@ const Login = () => {
             }
         };
 
-    const {data} = await axios.post("http://localhost:5000/user/login",{email,password},config);
+    const {data} = await axios.post("https://paypal-task-planner-production.up.railway.app/user/login",{email,password},config);
 
         toast({
             title: 'Login Successfull',

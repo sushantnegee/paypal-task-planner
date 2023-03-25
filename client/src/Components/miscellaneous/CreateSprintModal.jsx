@@ -31,7 +31,7 @@ const CreateSprintModal = ({children}) => {
                 },
               };
 
-              const  data = await axios.post(`http://localhost:5000/sprints`,{
+              const  data = await axios.post(`https://paypal-task-planner-production.up.railway.app/sprints`,{
                 name:sprintName,
                 startDate:sprintStartDate,
                 endDate:sprintEndDate

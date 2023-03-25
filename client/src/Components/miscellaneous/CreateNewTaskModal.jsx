@@ -195,7 +195,7 @@ const handleTask=(userSelected)=>{
 
           <ModalFooter>
             <Button colorScheme="blue" onClick={handleSubmit}>
-              Create Sprint
+              Add Task
             </Button>
           </ModalFooter>
         </ModalContent>

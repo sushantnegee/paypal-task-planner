@@ -47,7 +47,7 @@ const AllSprints = () => {
     <Box
       display={"flex"}
       flexDir="column"
-      w={{ base: "100%", md: "30%" }}
+      w={{ base: "100%", md: "40%" }}
       borderWidth="1px"
       alignItems={"center"}
       p={"3"}

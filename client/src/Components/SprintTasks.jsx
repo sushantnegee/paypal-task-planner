@@ -6,6 +6,7 @@ import { AppContext } from '../Context/ContextProvider';
 import axios from 'axios';
 import CreateNEwTaskModal from './miscellaneous/CreateNewTaskModal';
 import EditTaskModal from './miscellaneous/EditTaskModal';
+import ShowAllUsers from './miscellaneous/ShowAllUsers';
 
 const SprintTasks = () => {
   const [allTasks,settAllTasks] = useState();
@@ -95,6 +96,9 @@ const SprintTasks = () => {
         </Button>
         </EditTaskModal>:
         <Button onClick={handleEditTask}>Edit Task</Button>}
+        <ShowAllUsers>
+          <Button ml={3}>show All user</Button>
+          </ShowAllUsers>
         </Box>
       </Box>
       <Box

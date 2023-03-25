@@ -5,6 +5,7 @@ import TaskList from './TaskComponents/TaskList';
 import { AppContext } from '../Context/ContextProvider';
 import axios from 'axios';
 import CreateNEwTaskModal from './miscellaneous/CreateNewTaskModal';
+import EditTaskModal from './miscellaneous/EditTaskModal';
 
 const SprintTasks = () => {
   const [allTasks,settAllTasks] = useState();
@@ -12,7 +13,7 @@ const SprintTasks = () => {
   const [tasks,setTasks] = useState([]);
   const toast = useToast();
 
-  const {user,selectedSprint,fetchAgain} = useContext(AppContext)
+  const {user,selectedSprint,fetchAgain,selectedTask} = useContext(AppContext)
   const fetchTasks = async () => {
     if (!selectedSprint) return;
 
@@ -30,8 +31,8 @@ const SprintTasks = () => {
         config
       );
       setTasks(data);
-      console.log(data)
-      console.log("fetched Tasks =>",tasks)
+      // console.log(data)
+      // console.log("fetched Tasks =>",tasks)
       setLoading(false);
 
     } catch (error) {
@@ -46,10 +47,19 @@ const SprintTasks = () => {
     }
   };
 
+  const handleEditTask = ()=>{
+    toast({
+      title: "Select a Chat Before Editing!",
+      status: "error",
+      duration: 5000,
+      isClosable: true,
+      position: "top",
+    });
+  }
   useEffect(() => {
     fetchTasks();
   }, [selectedSprint,fetchAgain]);
-  console.log(tasks)
+  console.log('selected Task =====>',selectedTask)
   return (
     <> 
     {selectedSprint?
@@ -70,15 +80,21 @@ const SprintTasks = () => {
           fontFamily={"Work sans"}
           // color={"black"}
           >
-          Sprint Tasks
+          {selectedSprint.name}
         </Text>
         <Box display={'flex'} justifyContent={'center'} alignItems={'center'}>
         <Text padding={'5px'} borderRadius={'4px'} border={tasks.length==0?"":"2px solid pink"} mr={'30px'} color={'purple.800'} fontWeight={'600'}>Total Tasks : {tasks.length}</Text>
         <CreateNEwTaskModal>
-        <Button >
-          create new Task
+        <Button mr={'15px'} >
+          Create New Task
         </Button>
         </CreateNEwTaskModal>
+        {selectedTask?<EditTaskModal>
+        <Button border={'2px solid #38B2AC'}>
+          Edit Task
+        </Button>
+        </EditTaskModal>:
+        <Button onClick={handleEditTask}>Edit Task</Button>}
         </Box>
       </Box>
       <Box

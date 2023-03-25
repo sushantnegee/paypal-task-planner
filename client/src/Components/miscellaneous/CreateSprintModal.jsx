@@ -69,8 +69,8 @@ const CreateSprintModal = ({children}) => {
               });
         }
     }
-    console.log(children)
-    console.log(sprintStartDate, "to", sprintEndDate)
+    // console.log(children)
+    // console.log(sprintStartDate, "to", sprintEndDate)
   return (
     <>
       <span onClick={onOpen}>{children}</span>

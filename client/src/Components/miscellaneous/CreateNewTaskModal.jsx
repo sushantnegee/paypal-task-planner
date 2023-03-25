@@ -126,8 +126,8 @@ const CreateNEwTaskModal = ({ children }) => {
         });
       }
 }
-console.log(searchResult)
-console.log('task',newTask)
+// console.log(searchResult)
+// console.log('task',newTask)
 const handleTask=(userSelected)=>{
   if(assignee==userSelected){
       toast({
@@ -141,8 +141,8 @@ const handleTask=(userSelected)=>{
   }
   setAssignee(userSelected);
 }
-console.log(assignee)
-console.log(selectedSprint._id)
+// console.log(assignee)
+// console.log(selectedSprint._id)
   return (
     <>
       <span onClick={onOpen}>{children}</span>

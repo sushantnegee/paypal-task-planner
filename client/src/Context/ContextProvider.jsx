@@ -8,6 +8,7 @@ const ContextProvider = ({children}) => {
   const [sprints,setSprints] = useState();
   const [selectedSprint,setSelectedSprint] = useState()
   const [fetchAgain,setFetchAgain] = useState(false);
+  const [selectedTask,setSelectedTask] = useState();
   useEffect(()=>{
       const userInfo = JSON.parse(localStorage.getItem("userInfo"));
       setUser(userInfo);
@@ -15,7 +16,7 @@ const ContextProvider = ({children}) => {
         
       }
   },[loggedIn])
-  console.log("context")
+  // console.log("context")
 
   return (
     <AppContext.Provider value={{
@@ -27,7 +28,9 @@ const ContextProvider = ({children}) => {
         selectedSprint,
         setSelectedSprint,
         fetchAgain,
-        setFetchAgain
+        setFetchAgain,
+        selectedTask,
+        setSelectedTask
     }}>
         {children}
     </AppContext.Provider>

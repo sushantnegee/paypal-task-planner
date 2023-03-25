@@ -7,7 +7,7 @@ import axios from "axios";
 import CreateSprintModal from "./miscellaneous/CreateSprintModal";
 
 const AllSprints = () => {
-  const {fetchAgain,setFetchAgain, user, sprints, setSprints, selectedSprint, setSelectedSprint } =
+  const {fetchAgain,setFetchAgain, user, sprints, setSprints, selectedSprint, setSelectedSprint,setSelectedTask } =
     useContext(AppContext);
   const toast = useToast();
   const [modalOpen,setModalOpen] = useState(false);
@@ -36,10 +36,13 @@ const AllSprints = () => {
     }
   };
 
+  const handleSelections = (sprint)=>{
+    setSelectedSprint(sprint)
+    setSelectedTask('')
+  }
   useEffect(() => {
     fetchChats();
   }, [fetchAgain]);
-  console.log(sprints);
   return (
     <Box
       display={"flex"}
@@ -70,14 +73,14 @@ const AllSprints = () => {
           </Button>
         </CreateSprintModal>
       </Box>
-      <Box height={"100%"} width={"100%"} flexDir={"column"} overflowY="hidden">
+      <Box height={"100%"} width={"100%"} flexDir={"column"} overflowY="scroll">
         {sprints ? (
-          <Stack overflowY="scroll">
+          <Stack >
             {sprints.map((sprint) => (
               <Box
                 p={"3"}
                 cursor="pointer"
-                onClick={() => setSelectedSprint(sprint)}
+                onClick={()=>handleSelections(sprint)}
                 bg={selectedSprint === sprint ? "#38B2AC" : "#E8E8E8"}
                 color={selectedSprint === sprint ? "white" : "black"}
                 key={sprint._id}

@@ -2,6 +2,7 @@ import { Button, FormControl, FormLabel, Input, InputGroup, InputRightElement, u
 import React, { useState } from 'react'
 import {BiHide,BiShow} from 'react-icons/bi'
 import axios from 'axios'
+import {useNavigate} from 'react-router-dom'
 
 const Login = () => {
     const [show, setShow] = useState(false)
@@ -9,6 +10,7 @@ const Login = () => {
     const [password, setPassword] = useState("")
     const [loading,setLoading] = useState(false);
     const toast = useToast();
+    const navigate = useNavigate();
     const handleClick = ()=>{
         setShow(!show);
     }
@@ -43,6 +45,7 @@ const Login = () => {
           })
           localStorage.setItem('userInfo',JSON.stringify(data));
           setLoading(false);
+          navigate('/taskplanner')
     }catch(error){
         toast({
             title: 'Error Occured',

@@ -42,6 +42,19 @@ router.patch('/:id/status',protect, async (req, res) => {
   }
 });
 
+//
+router.patch('/:id/type',protect, async (req, res) => {
+  try {
+    const task = await Task.findByIdAndUpdate(req.params.id, { type: req.body.type }, { new: true });
+    if (!task) {
+      return res.status(404).send();
+    }
+    res.send(task);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
+
 // Get all tasks of a particular sprint --> tested and working
 router.get('/:sprint',protect, async (req, res) => {
     const sprint = req.params;

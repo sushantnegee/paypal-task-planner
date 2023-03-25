@@ -1,11 +1,39 @@
-import React, { useContext } from 'react'
-import { Box, Button, Stack, Text, useConst } from '@chakra-ui/react'
+import React, { useContext, useEffect } from 'react'
+import { Box, Button, Stack, Text, useConst, useToast } from '@chakra-ui/react'
 import { AddIcon } from '@chakra-ui/icons';
 import { AppContext } from '../Context/ContextProvider';
 import SprintLoading from './SprintLoading';
+import axios from 'axios';
 
 const AllSprints = () => {
-  const {sprints,selectedSprint,setSelectedSprint} = useContext(AppContext);
+  const {user,sprints,setSprints,selectedSprint,setSelectedSprint} = useContext(AppContext);
+  const toast = useToast();
+
+  const fetchChats = async () => {
+    try {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      };
+
+      const { data } = await axios.get("http://localhost:5000/sprints", config);
+      setSprints(data);
+    } catch (error) {
+      toast({
+        title: "Error Occured!",
+        description: "Failed to Load the sprints",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom-left",
+      });
+    }
+  };
+
+  useEffect(() => {
+    fetchChats();
+  },[]);
   console.log(sprints)
   return (
     <Box display={'flex'} flexDir="column" w={{base:"100%",md:'30%'}} borderWidth="1px" alignItems={'center'} p={'3'}>

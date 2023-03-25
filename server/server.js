@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cors())
 
 app.use('/user',userRoutes);
-app.use('/sprint',sprintRoutes);
+app.use('/sprints',sprintRoutes);
 app.use('/task',taskRoutes);
 const PORT = process.env.PORT || 5000;
 

@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const Task = require('../models/taskModel');
+const protect = require('../middleware/authMiddleware');
 
 // Create a new task -->tested and working
-router.post('/', async (req, res) => {
+router.post('/',protect, async (req, res) => {
   try {
     const task = await Task.create(req.body); // if i face bug
     res.status(201).send(task);
@@ -13,7 +14,7 @@ router.post('/', async (req, res) => {
 });
 
 // Change assignee--> tested and working
-router.patch('/:id/assignee', async (req, res) => {
+router.patch('/:id/assignee',protect, async (req, res) => {
     const {id} = req.params;
     const {assignee} = req.body
   try {
@@ -29,7 +30,7 @@ router.patch('/:id/assignee', async (req, res) => {
 });
 
 // Change status -->tested and working
-router.patch('/:id/status', async (req, res) => {
+router.patch('/:id/status',protect, async (req, res) => {
   try {
     const task = await Task.findByIdAndUpdate(req.params.id, { status: req.body.status }, { new: true });
     if (!task) {
@@ -42,7 +43,7 @@ router.patch('/:id/status', async (req, res) => {
 });
 
 // Get all tasks of a particular sprint --> tested and working
-router.get('/:sprint', async (req, res) => {
+router.get('/:sprint',protect, async (req, res) => {
     const sprint = req.params;
   try {
     const tasks = await Task.find(sprint );

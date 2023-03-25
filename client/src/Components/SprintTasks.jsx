@@ -49,7 +49,7 @@ const SprintTasks = () => {
 
   const handleEditTask = ()=>{
     toast({
-      title: "Select a Chat Before Editing!",
+      title: "Select a Task Before Editing!",
       status: "error",
       duration: 5000,
       isClosable: true,
